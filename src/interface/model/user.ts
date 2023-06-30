@@ -9,4 +9,9 @@ export namespace UserManageType {
     username: string = 'hdq'
     password: string = '123'
   }
+  export class UserRegistryFormState {
+    username: string | undefined
+    password: string | undefined
+    mobile: string | undefined
+  }
 }

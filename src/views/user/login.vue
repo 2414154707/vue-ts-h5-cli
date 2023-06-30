@@ -7,6 +7,16 @@
       </van-cell-group>
       <div style="margin: 16px">
         <van-button round block type="primary" native-type="submit">提交</van-button>
+
+        <van-button
+          @click="
+            () => {
+              $router.push('/user/registry')
+            }
+          "
+        >
+          注册
+        </van-button>
       </div>
     </van-form>
   </div>
@@ -16,12 +26,24 @@
 import { ref } from 'vue'
 import { UserManageType } from '@/interface/model/user'
 import { useUserSerivice } from '@/api/user'
+import { showToast } from 'vant'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const userSerivice = useUserSerivice()
 const formState = ref<UserManageType.UserLoginFormState>(new UserManageType.UserLoginFormState())
 const onSubmit = async () => {
   console.log(formState.value)
   let result = await userSerivice.login(formState.value)
   console.log(result)
+  showToast({
+    type: 'success',
+    message: result.msg,
+    onClose() {
+      router.replace({
+        path: '/home'
+      })
+    }
+  })
 }
 </script>
 

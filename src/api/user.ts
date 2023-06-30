@@ -10,7 +10,7 @@ import { BadicManageType } from '@/interface/common'
 import { UserManageType } from '@/interface/model/user'
 interface UserSeriviceInterface {
   login: (params: UserManageType.UserLoginFormState) => Promise<any>
-  registry: (params: { username: string; password: string }) => Promise<any>
+  registry: (params: UserManageType.UserRegistryFormState) => Promise<any>
 }
 export const useUserSerivice = function (): UserSeriviceInterface {
   class UserService {
@@ -25,8 +25,16 @@ export const useUserSerivice = function (): UserSeriviceInterface {
           return Promise.reject(err)
         })
     }
-    registry(params: { username: string; password: string }) {
-      return Promise.resolve(1)
+    registry(params: UserManageType.UserRegistryFormState) {
+      const url = API_USER_CONFIG.registry()
+      return request
+        .post(url, params)
+        .then(({ data }: BadicManageType.IAxiosResponse) => {
+          return Promise.resolve(data)
+        })
+        .catch((err: any) => {
+          return Promise.reject(err)
+        })
     }
   }
   return new UserService()

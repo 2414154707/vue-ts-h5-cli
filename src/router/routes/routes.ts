@@ -12,6 +12,11 @@ export const routes: Array<RouteRecordRaw> = [
     redirect: '/user/login'
   },
   {
+    path: '/home',
+    name: 'Home',
+    component: () => import(/* webpackChunkName: "Home" */ '@/views/home/index.vue')
+  },
+  {
     path: '/user/login',
     name: 'UserLogin',
     component: () => import(/* webpackChunkName: "UserLogin" */ '@/views/user/login.vue')
