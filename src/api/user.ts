@@ -2,7 +2,7 @@
  * @Author: hdq
  * @Date: 2023-06-29 23:29:43
  * @Last Modified by: hdq
- * @Last Modified time: 2023-06-30 00:17:17
+ * @Last Modified time: 2023-06-30 19:42:44
  */
 import { API_USER_CONFIG } from '@/config/api/user'
 import { request } from '@/utils/request'
@@ -22,7 +22,7 @@ export const useUserSerivice = function (): UserSeriviceInterface {
           return Promise.resolve(data)
         })
         .catch((err: any) => {
-          return Promise.resolve(err)
+          return Promise.reject(err)
         })
     }
     registry(params: { username: string; password: string }) {

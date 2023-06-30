@@ -2,7 +2,7 @@
  * @Author: hdq
  * @Date: 2023-06-29 23:10:37
  * @Last Modified by: hdq
- * @Last Modified time: 2023-06-30 00:21:46
+ * @Last Modified time: 2023-06-30 19:38:13
  */
 
 // @ts-nocheck
@@ -31,7 +31,7 @@ request.interceptors.request.use(
     return config
   },
   (error: AxiosError) => {
-    Promise.reject(error)
+    return Promise.reject(error)
   }
 )
 // 响应拦截

@@ -8,7 +8,7 @@ module.exports = defineConfig({
     host: 'localhost',
     port: 8088,
     proxy: {
-      '/dev': {
+      '^/dev': {
         target: 'http://localhost:7001',
         changeOrigin: true,
         pathRewrite: {

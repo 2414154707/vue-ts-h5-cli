@@ -2,9 +2,10 @@
  * @Author: hdq
  * @Date: 2023-06-29 21:08:23
  * @Last Modified by: hdq
- * @Last Modified time: 2023-06-29 21:25:43
+ * @Last Modified time: 2023-06-30 14:45:39
  */
-//@ts-nocheck
+
+// @ts-nocheck
 import { createStore } from 'vuex'
 import { BadicManageType } from '@/interface/common'
 import { CommitInterface } from '@/interface/store'
