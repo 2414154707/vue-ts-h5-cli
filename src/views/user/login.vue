@@ -26,6 +26,7 @@
 import { ref } from 'vue'
 import { UserManageType } from '@/interface/model/user'
 import { useUserSerivice } from '@/api/user'
+
 import { showToast } from 'vant'
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -39,6 +40,7 @@ const onSubmit = async () => {
     type: 'success',
     message: result.msg,
     onClose() {
+      window.localStorage.setItem('token', JSON.stringify(result.token))
       router.replace({
         path: '/home'
       })
