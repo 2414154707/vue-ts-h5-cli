@@ -23,6 +23,17 @@ module.exports = defineConfig({
       ComponentsPlugin({
         resolvers: [VantResolver()]
       })
-    ]
+    ],
+    performance: {
+      hints: 'warning',
+      //入口起点的最大体积
+      maxEntrypointSize: 60000000,
+      //生成文件的最大体积**加粗样式**
+      maxAssetSize: 40000000,
+      //只给出 js 文件的性能提示
+      assetFilter: function (assetFilename) {
+        return assetFilename.endsWith('.js')
+      }
+    }
   }
 })
