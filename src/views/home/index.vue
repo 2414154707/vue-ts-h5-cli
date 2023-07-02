@@ -4,8 +4,7 @@
       <h2>校园超市</h2>
     </header>
     <main>
-      {{ swiperList }}
-      <!-- {{ goodsList }} -->
+      <Carousel :swiperList="swiperList" />
     </main>
     <footer>3</footer>
   </div>
@@ -14,6 +13,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { useHomeSerivice } from '@/api/home'
+import Carousel from '@/components/Carousel.vue'
 let HomeSerivice = useHomeSerivice()
 let swiperList = ref<Array<string>>([])
 let goodsList = ref<Array<string>>([])
