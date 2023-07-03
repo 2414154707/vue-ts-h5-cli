@@ -1,5 +1,10 @@
 <template>
   <div>
+    <van-skeleton :loading="loading" v-if="loading">
+      <template #template>
+        <van-skeleton-image style="width: 100%; height: 180px" />
+      </template>
+    </van-skeleton>
     <Carousel :swiperList="swiperList" />
     <div class="goods-list">
       <van-list v-model:loading="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
@@ -26,6 +31,7 @@ let HomeSerivice = useHomeSerivice()
 let swiperList = ref<Array<string>>([])
 let goodsList = ref<Array<any>>([])
 let loading = ref(false)
+
 let finished = ref(false)
 let error = ref(false)
 let pagesize = ref<number>(10)
