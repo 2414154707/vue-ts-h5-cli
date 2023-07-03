@@ -14,8 +14,31 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: '/home',
     name: 'Home',
-    component: () => import(/* webpackChunkName: "Home" */ '@/views/home/index.vue')
+    component: () => import(/* webpackChunkName: "Home" */ '@/views/home/index.vue'),
+    children: [
+      {
+        path: '/home/index',
+        name: 'index',
+        component: () => import(/* webpackChunkName: "index" */ '@/views/index/index.vue')
+      },
+      {
+        path: '/home/about',
+        name: 'About',
+        component: () => import(/* webpackChunkName: "About" */ '@/views/about/index.vue')
+      },
+      {
+        path: '/home/cart',
+        name: 'Cart',
+        component: () => import(/* webpackChunkName: "Cart" */ '@/views/cart/index.vue')
+      },
+      {
+        path: '/home/my',
+        name: 'My',
+        component: () => import(/* webpackChunkName: "My" */ '@/views/my/index.vue')
+      }
+    ]
   },
+
   {
     path: '/user/login',
     name: 'UserLogin',

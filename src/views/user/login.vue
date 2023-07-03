@@ -42,7 +42,7 @@ const onSubmit = async () => {
     onClose() {
       window.localStorage.setItem('token', JSON.stringify(result.token))
       router.replace({
-        path: '/home'
+        path: '/home/index'
       })
     }
   })
