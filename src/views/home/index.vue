@@ -5,6 +5,9 @@
     </header>
     <main>
       <Carousel :swiperList="swiperList" />
+      <div class="goods-list">
+        <GoodsList :goodsList="goodsList" />
+      </div>
     </main>
     <footer>3</footer>
   </div>
@@ -14,6 +17,7 @@
 import { ref, onMounted } from 'vue'
 import { useHomeSerivice } from '@/api/home'
 import Carousel from '@/components/Carousel.vue'
+import GoodsList from '@/components/GoodsList.vue'
 let HomeSerivice = useHomeSerivice()
 let swiperList = ref<Array<string>>([])
 let goodsList = ref<Array<string>>([])
@@ -25,8 +29,8 @@ let getSwiperList = async () => {
 }
 let getGoodsList = async () => {
   let resData = await HomeSerivice.getGoodsList({})
-  goodsList.value = resData.result
-  console.log(resData, 'HomeSerivice.getGoodsList({})')
+  console.log(resData.result.slice(0, 10), 'resData.result')
+  goodsList.value = resData.result.slice(0, 10)
 }
 onMounted(() => {
   getSwiperList()
@@ -54,6 +58,7 @@ onMounted(() => {
   }
   main {
     flex: 1;
+    overflow: auto;
   }
 }
 </style>
